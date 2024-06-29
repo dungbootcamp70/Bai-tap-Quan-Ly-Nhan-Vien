@@ -23,8 +23,6 @@ document.getElementById("tknv").addEventListener("input", function (e) {
 
 document.querySelector("#btnThemNV").onclick = function (e) {
   let nv = layDuLieu();
-  console.log(nv.tknv, "tknv");
-  // let {tknv,name,email,password,datepicker,luongCB,chucVu,gioLam} = tam;
   let valid = true;
   for (let tt in nv) {
     valid &= kiemTraRong(nv[tt], tt);
@@ -47,16 +45,31 @@ document.querySelector("#btnThemNV").onclick = function (e) {
 };
 
 document.querySelector("#btnCapNhat").onclick = function (e) {
-  $("#myModal").modal("hide");
+  
   document.querySelector("#tknv").disabled = false;
-  let tam = layDuLieu();
+  let nv = layDuLieu();
+  let valid = true;
+  for (let tt in nv) {
+    valid &= kiemTraRong(nv[tt], tt);
+  }
+  valid &= kiemTraDoDai(nv.tknv,'tknv') 
+  & kiemTraTen(nv.name,'name') 
+  & kiemTraEmail(nv.email,'email')
+  & kiemTraMatKhau(nv.password,'password')
+  & kiemTraNgayLam(nv.datepicker,'datepicker')
+  & kiemTraLuong(nv.luongCB,'luongCB')
+  & kiemTraGioLam(nv.gioLam,'gioLam')
+  if(!valid){
+    return;
+}
+$("#myModal").modal("hide");
   for (let i in list) {
-    if (list[i].tknv === tam.tknv) {
-      list[i] = tam;
+    if (list[i].tknv === nv.tknv) {
+      list[i] = nv;
     }
   }
-  tam.tongLuong = luong(tam.luongCB, tam.chucVu);
-  tam.xepLoai = xepLoai(tam.gioLam);
+  nv.tongLuong = luong(nv.luongCB, nv.chucVu);
+  nv.xepLoai = xepLoai(nv.gioLam);
   xuat(list);
 };
 

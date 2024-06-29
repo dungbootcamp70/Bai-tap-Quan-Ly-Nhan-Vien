@@ -198,7 +198,7 @@
 									placeholder="Tài khoản">
 							</div>
 
-							<span class="sp-thongbao" id="tbTKNV"></span>
+							<span class="sp-thongbao" id="tb-tknv"></span>
 						</div>
 
 						<div class="form-group">
@@ -209,7 +209,7 @@
 								<input type="name" name="name" id="name" class="form-control input-sm"
 									placeholder="Họ và tên">
 							</div>
-							<span class="sp-thongbao" id="tbTen"></span>
+							<span class="sp-thongbao" id="tb-name"></span>
 						</div>
 
 						<div class="form-group">
@@ -221,7 +221,7 @@
 									placeholder="Email">
 							</div>
 
-							<span class="sp-thongbao" id="tbEmail"></span>
+							<span class="sp-thongbao" id="tb-email"></span>
 						</div>
 
 						<div class="form-group">
@@ -232,7 +232,7 @@
 								<input type="password" name="password" id="password" class="form-control input-sm"
 									placeholder="Mật khẩu">
 							</div>
-							<span class="sp-thongbao" id="tbMatKhau"></span>
+							<span class="sp-thongbao" id="tb-password"></span>
 						</div>
 
 						<div class="form-group">
@@ -244,7 +244,7 @@
 									placeholder="Ngày làm">
 							</div>
 
-							<span class="sp-thongbao" id="tbNgay"></span>
+							<span class="sp-thongbao" id="tb-datepicker"></span>
 						</div>
 						
 						<div class="form-group">
@@ -255,22 +255,22 @@
 								<input type="text" name="luongCB" id="luongCB" class="form-control input-sm"
 									placeholder="Lương cơ bản">
 							</div>
-							<span class="sp-thongbao" id="tbLuongCB"></span>
+							<span class="sp-thongbao" id="tb-luongCB"></span>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fa fa-briefcase"></i></span>
 								</div>
-								<select class="form-control" id="chucVu">
-									<option>Chọn chức vụ</option>
+								<label for="chucVu">Chức vụ:</label>
+								<select class="form-control" id="chucVu" placeholder="Chức vụ">
 									<option>Giám đốc</option>
 									<option>Trưởng phòng</option>
 									<option>Nhân viên</option>
 								</select>
 							</div>
 
-							<span class="sp-thongbao" id="tbChucVu"></span>
+							<span class="sp-thongbao" id="tb-chucVu"></span>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
@@ -280,7 +280,7 @@
 								<input type="text" name="gioLam" id="gioLam" class="form-control input-sm"
 									placeholder="Giờ làm">
 							</div>
-							<span class="sp-thongbao" id="tbGiolam"></span>
+							<span class="sp-thongbao" id="tb-gioLam"></span>
 						</div>
 						
 
@@ -318,41 +318,9 @@
 	<!-- <script src="js/modal.js"></script> -->
 
 
-	<script type="text/javascript">
-		$(document).ready(function () {
-			$('#sidebarCollapse').on('click', function () {
-				$('#sidebar').toggleClass('active');
-			});
-		});
-		function edit(event){
-    // document.querySelectorAll('.edit').forEach(button => {
-    //     button.addEventListener('click', function(event) {
-          let parentElement = event.target.closest('tr');
-          if (parentElement) {
-            alert('ID của thẻ cha là: ' + parentElement.id);
-          } else {
-            alert('Không tìm thấy thẻ cha.');
-          }
-        }
-//     );
-//       });
-// }
-//chỗ này anh cần viết function edit và trong nut button anh gọi sự kiện onclik mới đúng, hiện tại clivk thì nó chỉ dom tới .class đầu tiên dù bấm chỗ nào
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js" integrity="sha512-JSCFHhKDilTRRXe9ak/FJ28dcpOJxzQaCd3Xg8MyF6XFjODhy/YMCM8HW0TFDckNHWUewW+kfvhin43hKtJxAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
- function del(event) {
-    // Tìm thẻ tr cha gần nhất của nút bấm
-	console.log(list)
-    let trElement = event.target.closest('tr');
-    if (trElement) {
-      trElement.remove(); // Xóa thẻ tr
-	  let id = trElement.id
-	  delDS(id)
-	  console.log(list)
-    } else {
-      console.log('Không tìm thấy thẻ tr cha.');
-    }
-  }
-	</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>

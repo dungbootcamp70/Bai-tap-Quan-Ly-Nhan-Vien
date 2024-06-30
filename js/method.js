@@ -187,12 +187,12 @@ export function kiemTraNgayLam(value,selectorError) {
     return false;
 }
 
-export function kiemTraLuong(value,selectorError) {
+export function kiemTraGiaTri(value,selectorError,min,max) {
     let tb = document.getElementById(`tb-${selectorError}`);
     let nd = document.getElementById(`${selectorError}`);
-    if(value > 20000000 || value < 1000000) {
+    if(value > max || value < min) {
     tb.style.display = "block";
-    tb.innerHTML = `${nd.getAttribute("placeholder")} phải có giá trị nhập từ 1.000.000 - 20.000.000 !`;
+    tb.innerHTML = `${nd.getAttribute("placeholder")} phải có giá trị nhập từ ${min} - ${max} !`;
         return false;
     }
     tb.style.display = "none";;
@@ -200,15 +200,15 @@ export function kiemTraLuong(value,selectorError) {
 
 }
 
-export function kiemTraGioLam(value,selectorError) {
-    let tb = document.getElementById(`tb-${selectorError}`);
-    let nd = document.getElementById(`${selectorError}`);
-    if(value > 200 || value < 80) {
-    tb.style.display = "block";
-    tb.innerHTML = `${nd.getAttribute("placeholder")} phải có giá trị nhập từ 80 - 200 !`;
-        return false;
-    }
-    tb.style.display = "none";;
-    return true;
+// export function kiemTraGioLam(value,selectorError) {
+//     let tb = document.getElementById(`tb-${selectorError}`);
+//     let nd = document.getElementById(`${selectorError}`);
+//     if(value > 200 || value < 80) {
+//     tb.style.display = "block";
+//     tb.innerHTML = `${nd.getAttribute("placeholder")} phải có giá trị nhập từ 80 - 200 !`;
+//         return false;
+//     }
+//     tb.style.display = "none";;
+//     return true;
 
-}
+// }

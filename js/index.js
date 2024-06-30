@@ -4,7 +4,14 @@ import {
   reset,
   stringToSlug,
   kiemTraRong,
-  kiemTraDoDai,luong,xepLoai,kiemTraTen,kiemTraEmail,kiemTraMatKhau,kiemTraNgayLam,kiemTraLuong,kiemTraGioLam
+  kiemTraDoDai,
+  luong,
+  xepLoai,
+  kiemTraTen,
+  kiemTraEmail,
+  kiemTraMatKhau,
+  kiemTraNgayLam,
+  kiemTraGiaTri,
 } from "./method.js";
 let list = [];
 document.querySelector("#btnThem").onclick = function (e) {
@@ -27,16 +34,17 @@ document.querySelector("#btnThemNV").onclick = function (e) {
   for (let tt in nv) {
     valid &= kiemTraRong(nv[tt], tt);
   }
-  valid &= kiemTraDoDai(nv.tknv,'tknv') 
-  & kiemTraTen(nv.name,'name') 
-  & kiemTraEmail(nv.email,'email')
-  & kiemTraMatKhau(nv.password,'password')
-  & kiemTraNgayLam(nv.datepicker,'datepicker')
-  & kiemTraLuong(nv.luongCB,'luongCB')
-  & kiemTraGioLam(nv.gioLam,'gioLam')
-  if(!valid){
+  valid &=
+    kiemTraDoDai(nv.tknv, "tknv") &
+    kiemTraTen(nv.name, "name") &
+    kiemTraEmail(nv.email, "email") &
+    kiemTraMatKhau(nv.password, "password") &
+    kiemTraNgayLam(nv.datepicker, "datepicker") &
+    kiemTraGiaTri(nv.luongCB, "luongCB", 1000000, 20000000) &
+    kiemTraGiaTri(nv.gioLam, "gioLam", 80, 200);
+  if (!valid) {
     return;
-}
+  }
   nv.tongLuong = luong(nv.luongCB, nv.chucVu);
   nv.xepLoai = xepLoai(nv.gioLam);
   list.push(nv);
@@ -45,24 +53,24 @@ document.querySelector("#btnThemNV").onclick = function (e) {
 };
 
 document.querySelector("#btnCapNhat").onclick = function (e) {
-  
   document.querySelector("#tknv").disabled = false;
   let nv = layDuLieu();
   let valid = true;
   for (let tt in nv) {
     valid &= kiemTraRong(nv[tt], tt);
   }
-  valid &= kiemTraDoDai(nv.tknv,'tknv') 
-  & kiemTraTen(nv.name,'name') 
-  & kiemTraEmail(nv.email,'email')
-  & kiemTraMatKhau(nv.password,'password')
-  & kiemTraNgayLam(nv.datepicker,'datepicker')
-  & kiemTraLuong(nv.luongCB,'luongCB')
-  & kiemTraGioLam(nv.gioLam,'gioLam')
-  if(!valid){
+  valid &=
+    kiemTraDoDai(nv.tknv, "tknv") &
+    kiemTraTen(nv.name, "name") &
+    kiemTraEmail(nv.email, "email") &
+    kiemTraMatKhau(nv.password, "password") &
+    kiemTraNgayLam(nv.datepicker, "datepicker") &
+    kiemTraGiaTri(nv.luongCB, "luongCB", 1000000, 20000000) &
+    kiemTraGiaTri(nv.gioLam, "gioLam", 80, 200);
+  if (!valid) {
     return;
-}
-$("#myModal").modal("hide");
+  }
+  $("#myModal").modal("hide");
   for (let i in list) {
     if (list[i].tknv === nv.tknv) {
       list[i] = nv;
@@ -74,6 +82,7 @@ $("#myModal").modal("hide");
 };
 
 document.querySelector("#btnDong").onclick = function (e) {
+  $("#myModal").modal("hide");
   document.querySelector("#tknv").disabled = false;
   xuat(list);
 };
